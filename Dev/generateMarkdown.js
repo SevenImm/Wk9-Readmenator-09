@@ -22,11 +22,9 @@ function renderLicenseLink(license) {
     licenseLink = 'http://perso.crans.org/besson/LICENSE.html'
   } else if (license === 'Creative Commons Licenses') {
     licenseLink = 'https://creativecommons.org/licenses/by-nd/4.0'
-  } if (!license) {
+  } if (license === 'None') {
     return '';
-  }
-
-  return `[View License](https://choosealicense.com/licenses/${license}/)`;
+  } return `[View License](https://choosealicense.com/licenses/${license}/)`;
 }
 
 // Function that returns the license section of README
@@ -37,8 +35,7 @@ function renderLicenseSection(license) {
     return '';
   }
 
-  return `## License
-
+  return ` License
 This project is licensed under the ${license} License - see the [License](#license) section for details.`;
 }
 
@@ -54,13 +51,18 @@ function generateMarkdown(data) {
   ## ${renderLicenseSection(data.license)} ${renderLicenseBadge(data.license)}
   ### ${renderLicenseLink(data.license)}
 
+  ## Description:
+  ### ${data.description}
+
   ## Table of Contents
   ### * [License](#license)
+  ### * [Description](#description)
   ### * [Installation](#installation)
   ### * [Usage](#usage)
   ### * [Contributers](#contributers)
   ### * [Tests](#tests)
   ### * [Questions](#Questions)
+
 
   ## Installation:
   ### The following is required to run this app:
